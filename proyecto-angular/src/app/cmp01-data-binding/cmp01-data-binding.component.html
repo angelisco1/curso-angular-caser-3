@@ -4,15 +4,30 @@
 
 <p>Me llamo {{nombre}} {{apellido}}</p>
 <!-- <p>Me llamo {{apellido + ', ' + nombre}}</p> -->
-<p>Me llamo {{ getNombreCompleto() }}</p>
-
+<!-- <p>Me llamo {{ getNombreCompleto() }}</p> --><!-- Evitar llamar a funciones con las {{}} o el [] -->
 <p>Me llamo {{ nombreCompleto }}</p>
 
 
 <h3>Property Binding</h3>
 
+<img [src]="logoAngular" width="150" alt="Logo de {{tituloLogo}}">
+<!-- <img src="{{logoAngular}}" width="150" alt="Logo de Angular"> -->
+<img [src]="logoAngular" width="150" [alt]="textoAltLogo" (mouseenter)="mostrarPorConsola()">
+
 
 <h3>Event Binding</h3>
 
+<!-- click, change, mousemove, mouseleave, mouseenter, keypress, keyup, keydown, copy, paste...  -->
+<button type="button" (click)="gritaMiNombre()">Grita mi nombre</button>
+
+<a href="http://google.es" target="_blank" (click)="evitarIrAGoogle($event)">No quiero ir a google</a>
+
+
+<app-ej01-data-binding></app-ej01-data-binding>
+
 
 <h3>Two Way Data Binding</h3>
+
+<input type="text" [(ngModel)]="nombre">
+
+<input type="text" [value]="nombre" (input)="changeNombre($event)">
