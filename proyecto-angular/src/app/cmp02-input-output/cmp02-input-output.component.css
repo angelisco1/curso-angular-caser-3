@@ -1,0 +1,4 @@
+div.lista-sugus {
+  display: flex;
+  justify-content: space-evenly
+}

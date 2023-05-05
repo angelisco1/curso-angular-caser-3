@@ -9,6 +9,8 @@ export class SugusComponent {
   @Input() sabor: string = 'limón'
   @Input() color: string = 'yellow'
 
+
+
   get envoltorioStyles() {
     return {
       backgroundColor: this.color

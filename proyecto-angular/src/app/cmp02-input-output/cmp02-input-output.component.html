@@ -1,7 +1,20 @@
 <h2>@Input y @Output</h2>
 
-<app-sugus></app-sugus>
-<app-sugus sabor="fresa" color="red"></app-sugus>
-<app-sugus sabor="naranja" color="orange"></app-sugus>
-<app-sugus sabor="piña" color="blue"></app-sugus>
-<app-sugus sabor="sandia" color="indianred"></app-sugus>
+<div class="lista-sugus">
+  <!-- <app-sugus></app-sugus>
+  <app-sugus sabor="fresa" color="red"></app-sugus>
+  <app-sugus sabor="naranja" color="orange"></app-sugus>
+  <app-sugus sabor="piña" color="blue"></app-sugus>
+  <app-sugus sabor="sandia" color="indianred"></app-sugus> -->
+
+  <app-producto sabor="fresa" color="red" (productoAñadido)="addToCart($event)"></app-producto>
+
+  <app-producto sabor="naranja" color="orange" (productoAñadido)="addToCart($event)"></app-producto>
+
+  <app-producto sabor="limón" color="yellow" (productoAñadido)="addToCart($event)"></app-producto>
+
+  <app-producto sabor="piña" color="blue" (productoAñadido)="addToCart($event)"></app-producto>
+
+  <app-producto sabor="sandia" color="indianred" (productoAñadido)="addToCart($event)"></app-producto>
+
+</div>

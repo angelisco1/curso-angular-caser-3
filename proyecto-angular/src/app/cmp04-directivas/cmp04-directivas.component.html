@@ -1,0 +1,62 @@
+<h2>Directivas</h2>
+
+<h3>De atributo</h3>
+
+<!-- ngModel, ngStyle -->
+<p [ngClass]="pClases">El texto de color naranja y el fondo de color negro</p>
+
+<h3>Estructurales</h3>
+
+<h4>ngIf</h4>
+
+<!-- <button type="button" *ngIf="!textoNaranjaActivado" (click)="changeTextoNaranja(true)">Activar texto naranja</button>
+<button type="button" *ngIf="textoNaranjaActivado" (click)="changeTextoNaranja(false)">Desactivar texto naranja</button> -->
+
+<button type="button" *ngIf="!textoNaranjaActivado; else desactivarBtn" (click)="changeTextoNaranja(true)">Activar texto
+  naranja</button>
+
+<ng-template #desactivarBtn>
+  <button type="button" (click)="changeTextoNaranja(false)">Desactivar texto naranja</button>
+</ng-template>
+
+<div *ngIf="fondoNegroActivado; then desactivarFondoNegroBtn else activarFondoNegroBtn"></div>
+
+<ng-template #activarFondoNegroBtn>
+  <button type="button" (click)="changeFondoNegro(true)">Activar fondo negro</button>
+  <p>Ahora mismo el fondo es blanco</p>
+</ng-template>
+
+<ng-template #desactivarFondoNegroBtn>
+  <button type="button" (click)="changeFondoNegro(false)">Desactivar fondo negro</button>
+  <p>Ahora mismo el fondo es negro</p>
+</ng-template>
+
+<h4>ngFor</h4>
+
+<ul>
+  <li
+    *ngFor="let telefono of listaTelefonos; let posicion = index; let esPrimero = first; let esUltimo = last; let posicionPar = even; let total = count"
+    [ngClass]="{borderTop: esPrimero, borderBottom: esUltimo, itemPar: posicionPar}">
+    {{posicion+1}} / {{total}} -> {{telefono.nombre}}
+    ({{telefono.precio}} €)</li>
+</ul>
+
+<h4>ngSwitch</h4>
+
+<select [(ngModel)]="colorSeleccionado">
+  <option value="">Elige un color</option>
+  <option *ngFor="let color of colores" [value]="color">{{color}}</option>
+</select>
+
+<div [ngSwitch]="colorSeleccionado">
+
+  <ng-container *ngFor="let color of colores">
+    <p *ngSwitchCase="color">Has seleccionado el color {{color}}</p>
+  </ng-container>
+
+  <p *ngSwitchDefault>Oye, selecciona un color</p>
+
+  <!-- <p *ngSwitchCase="'red'">Has seleccionado el color red</p>
+  <p *ngSwitchCase="'yellow'">Has seleccionado el color yellow</p>
+  <p *ngSwitchCase="'blue'">Has seleccionado el color blue</p> -->
+</div>

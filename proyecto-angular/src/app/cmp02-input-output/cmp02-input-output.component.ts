@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class Cmp02InputOutputComponent {
 
+  carrito: Array<any> = []
+
+  addToCart(producto: any): void {
+    alert('Se ha añadido el producto ' + JSON.stringify(producto) + ' al carrito de la compra.')
+    this.carrito.push(producto)
+  }
+
 }
