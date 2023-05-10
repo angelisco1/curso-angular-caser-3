@@ -2,3 +2,9 @@ div.lista-sugus {
   display: flex;
   justify-content: space-evenly
 }
+
+div.item-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

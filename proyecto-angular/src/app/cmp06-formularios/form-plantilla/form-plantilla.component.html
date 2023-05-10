@@ -1,0 +1,23 @@
+<h3>De plantilla</h3>
+
+<form (ngSubmit)="registro(formRegistro)" #formRegistro="ngForm">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="datosUsuario.nombre" required minlength="3">
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="datosUsuario.email" pattern="[a-z]+@[a-z]+\.[a-z]+">
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="datosUsuario.password" minlength="5">
+  </div>
+
+  <button type="submit" [disabled]="formRegistro.invalid">Registrar</button>
+  <!-- <button type="submit" (click)="registro()">Registrar</button> -->
+</form>
+
+<!-- GET localhost:4200/?nombre=aaa&email=ajasd&password=jaksd -->

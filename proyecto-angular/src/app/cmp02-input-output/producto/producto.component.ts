@@ -10,7 +10,7 @@ export class ProductoComponent {
   @Input() color: string = 'red'
 
   @Output() productoAñadido = new EventEmitter<any>()
-
+  @Output() productoQuitado = new EventEmitter<any>()
 
   addProduct() {
     const datosSugus = {
@@ -19,6 +19,15 @@ export class ProductoComponent {
     }
     console.log({ datosSugus })
     this.productoAñadido.emit(datosSugus)
+  }
+
+  removeProduct() {
+    const datosSugus = {
+      color: this.color,
+      sabor: this.sabor
+    }
+    // $event -> es el datosSugus
+    this.productoQuitado.emit(datosSugus)
   }
 
 }

@@ -1,0 +1,23 @@
+<h2>Pipes</h2>
+
+<div>
+  <h3>{{nombre}}</h3>
+  <p>{{descripcion}}</p>
+  <p>Precio: {{precio}}</p>
+  <p>Lanzamiento: {{fechaLanzamiento}}</p>
+</div>
+
+<select [(ngModel)]="currencyCode">
+  <option *ngFor="let currency of currencies" [value]="currency.code">{{currency.text | titlecase}}</option>
+</select>
+
+<div>
+  <!-- <h3>{{nombre | uppercase}}</h3> -->
+  <h3>{{nombre | titlecase}}</h3>
+  <p>{{descripcion | slice:0:120}}...</p>
+  <p>Precio: {{precio | descuento:descuentoAAplicar | currency:currencyCode}}</p>
+  <p>Lanzamiento: {{fechaLanzamiento | date:dateFormat}}</p>
+</div>
+
+
+<p>Mensaje: {{msg | async}}</p>

@@ -1,0 +1,22 @@
+<h3>Reactivo</h3>
+
+<form [formGroup]="formRegistro" (ngSubmit)="registro()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email">
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="text" id="password" formControlName="password">
+  </div>
+
+  <button type="submit" [disabled]="formRegistro.invalid">Registrar</button>
+
+  <!-- <button type="submit">Registrar</button> -->
+</form>

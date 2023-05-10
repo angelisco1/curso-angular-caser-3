@@ -7,7 +7,7 @@
   <app-sugus sabor="piña" color="blue"></app-sugus>
   <app-sugus sabor="sandia" color="indianred"></app-sugus> -->
 
-  <app-producto sabor="fresa" color="red" (productoAñadido)="addToCart($event)"></app-producto>
+  <!-- <app-producto sabor="fresa" color="red" (productoAñadido)="addToCart($event)"></app-producto>
 
   <app-producto sabor="naranja" color="orange" (productoAñadido)="addToCart($event)"></app-producto>
 
@@ -15,6 +15,25 @@
 
   <app-producto sabor="piña" color="blue" (productoAñadido)="addToCart($event)"></app-producto>
 
-  <app-producto sabor="sandia" color="indianred" (productoAñadido)="addToCart($event)"></app-producto>
+  <app-producto sabor="sandia" color="indianred" (productoAñadido)="addToCart($event)"></app-producto> -->
+
+  <app-producto *ngFor="let sugus of listaSugus" [sabor]="sugus.sabor" [color]="sugus.color"
+    (productoAñadido)="addToCart($event)" (productoQuitado)="removeFromCart($event)"></app-producto>
 
 </div>
+
+<h3>Tu carrito</h3>
+
+<div class="lista-sugus" *ngIf="carrito.length > 0; else carritoVacio">
+  <div *ngFor="let item of carrito" class="item-carrito">
+
+    <app-sugus [sabor]="item.sugus.sabor" [color]="item.sugus.color"></app-sugus>
+
+    <span> x {{item.cantidad}}</span>
+
+  </div>
+</div>
+
+<ng-template #carritoVacio>
+  <p>El carrito está vacío. Por favor, añade los productos.</p>
+</ng-template>
