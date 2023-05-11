@@ -1,0 +1,23 @@
+<h2>Añade a tu vendehumo favorito</h2>
+
+<form [formGroup]="formVendehumo" (ngSubmit)="crearVendehumo()">
+  <div>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  </div>
+
+  <div>
+    <label for="categoria">Categoria</label>
+    <select id="categoria" formControlName="categoria">
+      <option *ngFor="let option of categoryOptions" [value]="option.value">{{option.text}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="imagen">Imagen</label>
+    <input type="text" id="imagen" formControlName="imagen">
+    <img width="80" [src]="formVendehumo.get('imagen')?.value" alt="">
+  </div>
+
+  <button type="submit">Guardar</button>
+</form>

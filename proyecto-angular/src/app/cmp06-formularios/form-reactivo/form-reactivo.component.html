@@ -4,19 +4,56 @@
   <div>
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" formControlName="nombre">
+    <ul *ngIf="formRegistro.get('nombre')?.errors && formRegistro.get('nombre')?.touched">
+      <!-- {required: true, minlength: {a: 1, b:1}} => [{key: 'required', value: true}, {key: 'minlength', value: {a: 1, b:1}}] -->
+      <ng-container *ngFor="let error of formRegistro.get('nombre')?.errors | keyvalue">
+        <ng-container [ngSwitch]="error.key">
+          <li *ngSwitchCase="'required'">El campo es obligatorio</li>
+          <li *ngSwitchCase="'minlength'">El campo necesita un mínimo de {{error.value.requiredLength}} letras (llevas
+            {{error.value.actualLength}}). </li>
+          <li *ngSwitchCase="'pattern'">El campo no es un email</li>
+        </ng-container>
+      </ng-container>
+    </ul>
   </div>
 
   <div>
     <label for="email">Email:</label>
     <input type="text" id="email" formControlName="email">
+    <ul *ngIf="formRegistro.get('email')?.errors && formRegistro.get('email')?.touched">
+      <!-- {required: true, minlength: {a: 1, b:1}} => [{key: 'required', value: true}, {key: 'minlength', value: {a: 1, b:1}}] -->
+      <ng-container *ngFor="let error of formRegistro.get('email')?.errors | keyvalue">
+        <ng-container [ngSwitch]="error.key">
+          <li *ngSwitchCase="'required'">El campo es obligatorio</li>
+          <li *ngSwitchCase="'minlength'">El campo necesita un mínimo de {{error.value.requiredLength}} letras (llevas
+            {{error.value.actualLength}}). </li>
+          <li *ngSwitchCase="'pattern'">El campo no es un email</li>
+        </ng-container>
+      </ng-container>
+    </ul>
   </div>
 
   <div>
     <label for="password">Password:</label>
-    <input type="text" id="password" formControlName="password">
+    <input type="password" id="password" formControlName="password">
+
+    <!-- TODO: para quien quiera intentarlo, podría crear un componente de error para no tener duplicado el código del "ul" en 3 sitios, y dejar todo más simple y más mantenible -->
+    <!-- <app-error *ngIf="formRegistro.get('password')?.errors && formRegistro.get('password')?.touched" [errors]="formRegistro.get('password')?.errors"></app-error> -->
+
+    <ul *ngIf="formRegistro.get('password')?.errors && formRegistro.get('password')?.touched">
+      <!-- {required: true, minlength: {a: 1, b:1}} => [{key: 'required', value: true}, {key: 'minlength', value: {a: 1, b:1}}] -->
+      <ng-container *ngFor="let error of formRegistro.get('password')?.errors | keyvalue">
+        <ng-container [ngSwitch]="error.key">
+          <li *ngSwitchCase="'required'">El campo es obligatorio</li>
+          <li *ngSwitchCase="'minlength'">El campo necesita un mínimo de {{error.value.requiredLength}} letras (llevas
+            {{error.value.actualLength}}). </li>
+          <li *ngSwitchCase="'pattern'">El campo no es un email</li>
+          <li *ngSwitchCase="'passwordSegura'">La contraseña se ha filtrado y no es segura</li>
+        </ng-container>
+      </ng-container>
+    </ul>
   </div>
 
   <button type="submit" [disabled]="formRegistro.invalid">Registrar</button>
-
-  <!-- <button type="submit">Registrar</button> -->
+  <button type="submit">Registrar</button>
 </form>

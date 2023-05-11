@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from '../custom-validators/custom-validators';
 
 @Component({
   selector: 'app-form-reactivo',
@@ -18,11 +19,12 @@ export class FormReactivoComponent {
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z]+@[a-z]+\.[a-z]+")
+        Validators.pattern("[a-z]+@[a-z]+\\.[a-z]+")
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(5)
+        Validators.minLength(5),
+        CustomValidators.passwordSegura(['12345', 'password']),
       ]),
     })
   }

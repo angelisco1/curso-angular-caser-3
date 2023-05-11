@@ -1,0 +1,8 @@
+<h2>Vota a tu vendehumos favorito</h2>
+
+<ul>
+  <li *ngFor="let vendehumo of vendehumos">
+    {{vendehumo.nombre}} - {{vendehumo.numVotos}}
+    <button type="button" (click)="votar(vendehumo)">🔼</button>
+  </li>
+</ul>
