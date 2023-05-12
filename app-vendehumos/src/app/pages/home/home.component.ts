@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { VendehumosService } from 'src/app/services/vendehumos.service';
 import { Vendehumo } from 'src/app/types/vendehumo.types';
 
@@ -10,9 +11,11 @@ import { Vendehumo } from 'src/app/types/vendehumo.types';
 export class HomeComponent {
 
   vendehumos: Array<Vendehumo> = []
+  isLoggedin: boolean = false
 
   constructor(
     private vendehumosService: VendehumosService,
+    private authService: AuthService,
   ) {
 
   }
@@ -22,6 +25,11 @@ export class HomeComponent {
     this.vendehumosService.getVendehumos()
       .subscribe((listaVendehumos: Array<Vendehumo>) => {
         this.vendehumos = listaVendehumos
+      })
+
+    this.authService.isLoggedin$
+      .subscribe((isLoggedin: boolean) => {
+        this.isLoggedin = isLoggedin
       })
   }
 

@@ -1,6 +1,27 @@
 <header class="d-flex jc-evenly ai-center">
   <h1>Ranking vendehumos</h1>
   <a routerLink="/home">Inicio</a>
-  <a routerLink="/nuevo-vendehumo">Añadir un vendehumo</a>
-  <p>{{loggedInText}}</p>
+  <a *ngIf="isLoggedin" routerLink="/nuevo-vendehumo">Añadir un vendehumo</a>
+  <!-- <p>{{loggedInText}}</p> -->
+
+  <button type="button" *ngIf="isLoggedin; else formLogin" (click)="logout()">Logout</button>
+
+  <ng-template #formLogin>
+    <form [formGroup]="form" (ngSubmit)="login()">
+
+      <span>
+        <!-- <label for="username">Username</label> -->
+        <input type="text" id="username" placeholder="Username" formControlName="username">
+      </span>
+
+      <span>
+        <!-- <label for="password">Password</label> -->
+        <input type="password" id="password" placeholder="Password" formControlName="password">
+      </span>
+
+      <button type="submit">Login</button>
+
+    </form>
+  </ng-template>
+
 </header>

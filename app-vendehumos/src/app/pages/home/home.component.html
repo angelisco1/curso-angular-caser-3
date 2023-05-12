@@ -1,11 +1,24 @@
 <h2>Vota a tu vendehumos favorito</h2>
 
-<ul>
+<ul *ngIf="isLoggedin; else listaNoLogueado">
   <li *ngFor="let vendehumo of vendehumos">
-    <a [routerLink]="['/info-vendehumo', vendehumo.id]">{{vendehumo.nombre}}</a> - {{vendehumo.numVotos}}
+    <a [routerLink]="['info-vendehumo', vendehumo.id]">{{vendehumo.nombre}}</a> - {{vendehumo.numVotos}}
     <button type="button" (click)="votar(vendehumo)">🔼</button>
   </li>
 </ul>
 
+<ng-template #listaNoLogueado>
+  <ul>
+    <li *ngFor="let vendehumo of vendehumos">
+      {{vendehumo.nombre}} - {{vendehumo.numVotos}}
+    </li>
+  </ul>
+</ng-template>
+
+
+
+
 <!-- info-vendehumo/1234/editar
 ['/info-vendehumo', 1234, 'editar'] -->
+
+<router-outlet></router-outlet>

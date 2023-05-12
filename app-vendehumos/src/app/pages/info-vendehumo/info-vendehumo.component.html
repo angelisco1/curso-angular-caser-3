@@ -1,1 +1,10 @@
-<p>Este es el de info</p>
+<div *ngIf="vendehumo; else loading">
+  <h3>{{vendehumo.nombre}} ({{vendehumo.id}})</h3>
+  <p>Categoría: {{vendehumo.categoria}}</p>
+  <p>Votos: {{vendehumo.numVotos}}</p>
+  <img width="100" [src]="vendehumo.imagen" alt="Foto del vendehumo">
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
