@@ -8,6 +8,8 @@ import { InfoVendehumoComponent } from './pages/info-vendehumo/info-vendehumo.co
 import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { AppRouterModule } from './routes/index.routes';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     NuevoVendehumoComponent,
     InfoVendehumoComponent,
-    HeaderComponent
+    HeaderComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

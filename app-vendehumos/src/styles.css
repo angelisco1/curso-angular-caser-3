@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+.d-flex {
+  display: flex;
+}
+
+.jc-evenly {
+  justify-content: space-evenly;
+}
+
+.ai-center {
+  align-items: center;
+}

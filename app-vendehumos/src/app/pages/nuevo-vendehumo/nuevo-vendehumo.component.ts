@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { VendehumosService } from 'src/app/services/vendehumos.service';
 import { Vendehumo } from 'src/app/types/vendehumo.types';
 
@@ -18,7 +19,8 @@ export class NuevoVendehumoComponent {
   ]
 
   constructor(
-    private vendehumosService: VendehumosService
+    private vendehumosService: VendehumosService,
+    private router: Router,
   ) {
     this.formVendehumo = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
@@ -38,6 +40,7 @@ export class NuevoVendehumoComponent {
     this.vendehumosService.postVendehumo(vendehumo)
       .subscribe((data: any) => {
         console.log({ data })
+        this.router.navigateByUrl('/home')
       })
   }
 

@@ -2,7 +2,10 @@
 
 <ul>
   <li *ngFor="let vendehumo of vendehumos">
-    {{vendehumo.nombre}} - {{vendehumo.numVotos}}
+    <a [routerLink]="['/info-vendehumo', vendehumo.id]">{{vendehumo.nombre}}</a> - {{vendehumo.numVotos}}
     <button type="button" (click)="votar(vendehumo)">🔼</button>
   </li>
 </ul>
+
+<!-- info-vendehumo/1234/editar
+['/info-vendehumo', 1234, 'editar'] -->

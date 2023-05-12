@@ -19,6 +19,17 @@ export class VendehumosService {
     private http: HttpClient,
   ) { }
 
+  getVendehumo(vendehumoId: string): Observable<any> {
+    const url = `${this.url}/${vendehumoId}.json`
+    return this.http.get(url)
+      .pipe(
+        map((vendehumo: any) => {
+          vendehumo.id = vendehumoId
+          return vendehumo
+        })
+      )
+  }
+
   getVendehumos(): Observable<Array<Vendehumo>> {
     // return of(this.listaVendehumos).pipe(
     //   delay(2500)
